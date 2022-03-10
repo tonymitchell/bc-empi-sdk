@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HCIM_IN_GetDemographicsResponse xmlns="urn:hl7-org:v3" xmlns:mif="urn:hl7-org:v3/mif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!-- unique id for the message -->
+	<id root="2.16.840.1.113883.3.51.1.1.1" extension="419E8980-8D02-4402-B43D-6A32575B12EF"/>
+	<!-- message creation time -->
+	<creationTime value="20050621000000"/>
+	<!-- message version -->
+	<versionCode code="V3PR1"/>
+	<!-- interaction id -->
+	<interactionId root="2.16.840.1.113883.3.51.1.1.2" extension="HCIM_IN_GetDemographicsResponse"/>
+	<!-- processing code (P = production) -->
+	<processingCode code="P"/>
+	<!-- processing mode code (T = current processing) -->
+	<processingModeCode code="T"/>
+	<!-- accept ack (TBD) -->
+	<acceptAckCode code="NE"/>
+	<!-- receiver of the message -->
+	<receiver typeCode="RCV">
+		<device determinerCode="INSTANCE" classCode="DEV">
+			<!-- id/@extension identifies the receiving device/system inside the organization -->
+			<id root="2.16.840.1.113883.3.51.1.1.4" extension="192.168.0.1"/>
+			<asAgent classCode="AGNT">
+				<representedOrganization determinerCode="INSTANCE" classCode="ORG">
+					<!-- id/@extension identifies the receiving organization -->
+					<id root="2.16.840.1.113883.3.51.1.1.3" extension="VIHA"/>
+				</representedOrganization>
+			</asAgent>
+		</device>
+	</receiver>
+	<!-- sender of the message -->
+	<sender typeCode="SND">
+		<device determinerCode="INSTANCE" classCode="DEV">
+			<!-- id/@extension identifies the sending device/system inside the organization -->
+			<!-- Mapped to EMPI.SSID -->
+			<id root="2.16.840.1.113883.3.51.1.1.5" extension="10.62.230.12"/>
+			<asAgent classCode="AGNT">
+				<representedOrganization determinerCode="INSTANCE" classCode="ORG">
+					<!-- id/@extension identifies the sending organization -->
+					<!-- Mapped to EMPI.Governance Authority -->
+					<id root="2.16.840.1.113883.3.51.1.1.3" extension="BCHCIM"/>
+				</representedOrganization>
+			</asAgent>
+		</device>
+	</sender>
+	<controlActProcess classCode="ACCM" moodCode="EVN">
+		<subject typeCode="CIND">
+			<target classCode="ENT">
+				<id root="2.16.840.1.113883.3.51.1.1.6" extension="00100" assigningAuthorityName="VIHA-CERN"/>
+							<id root="2.16.840.1.113883.3.51.1.1.6" extension="00101" assigningAuthorityName="VCHA_PG"/>
+				<!-- address is optional and NOT  limited to two instances identified by the -->
+				<!-- @use attribute (PST and PHYS) (because History is allowed)  -->
+				<!-- @use is a list of two values (separated by spaces) that contain the type -->
+				<!-- of the address and, if available, the value 'VER' to indicate a verified address -->
+				<!-- the first value maps to EMPI.Address Use Type -->
+				<!-- if present, the second value sets EMPI.Validate Address Flag -->
+				<addr use="PHYS VER" nullFlavor='MSK'>
+					<!-- ISO 2 digits country code, mapped to EMPI.Country -->
+					<country>CA</country>
+					<!-- State/province code, free form to accomodate foreign regions -->
+					<!-- Mapped to EMPI.Province -->
+					<state>BC</state>
+					<!-- City name, mapped to EMPI.City -->
+					<city>Victoria</city>
+					<!-- ZIP/Postal code, mapped to EMPI.Postal Code -->
+					<postalCode>V1V 1V1</postalCode>
+					<!-- Street address lines, max three instances -->
+					<!-- Mapped to EMPI.Address Line(s) -->
+					<streetAddressLine>737 Courtney</streetAddressLine>
+					<streetAddressLine>3rd floor</streetAddressLine>
+					<useablePeriod value="20050101"/>
+				</addr>
+				<addr use="PST">
+					<!-- ISO 2 digits country code, mapped to EMPI.Country -->
+					<country>CA</country>
+					<!-- State/province code, free form to accomodate foreign regions -->
+					<!-- Mapped to EMPI.Province -->
+					<state>BC</state>
+					<!-- City name, mapped to EMPI.City -->
+					<city>Victoria</city>
+					<!-- ZIP/Postal code, mapped to EMPI.Postal Code -->
+					<postalCode>V1V 1V1</postalCode>
+					<!-- Street address lines, max three instances -->
+					<!-- Mapped to EMPI.Address Line(s) -->
+					<streetAddressLine>Previous Address Line 1</streetAddressLine>
+					<streetAddressLine>Previous Address Line 2</streetAddressLine>
+					<useablePeriod value="20040612"/>
+				</addr>
+				<!-- telecom is optional and limited to three instances identified by the -->
+				<!-- @use attribute (H-home, WP-workplace, MC-mobile) -->
+				<!-- The value attribute can be divided in three parts: the first one -->
+				<!-- goes from the start to the colon character and gets mapped to -->
+				<!-- EMPI.Telecom equipment, if this first part is 'tel', the next -->
+				<!-- three characters after the colon are mapped to EMPI.Area code -->
+				<!-- and the final seven characters to EMPI.Phone number. If the -->
+				<!-- first part is 'mailto', all the value after the colon character -->
+				<!-- is mapped to EMPI.Email address -->
+
+				<telecom use="WP" value="mailto:jim@example.com"/>
+				<telecom use="WP" value="tel:2501234567">
+					<useablePeriod value="20050101"/>
+				</telecom>
+								<telecom use="H" value="tel:8888888"/>
+				<telecom use="WP" value="tel:2501829834">
+					<useablePeriod value="20041503"/>
+				</telecom>
+
+				<identifiedPerson determinerCode="INSTANCE" classCode="PSN">
+					<id root="2.16.840.1.113883.3.51.1.1.6.1" extension="9888888888" displayable="true"/>
+					<id root="2.16.840.1.113883.3.51.1.1.6.1" extension="9777777777" displayable="false"/>
+					<!-- name/@use indicates the type of name (C-License, L-Legal) -->
+					<!-- Mapped to EMPI.Name Type -->
+					<name use="L" nullFlavor="MSK">
+						<!-- Family name, mapped to EMPI.Surname -->
+						<family>Dumpty</family>
+						<!-- Up to three instances of given, mapping to EMPI.First Given name, -->
+						<!-- EMPI.Second Given name and EMPI.Third Given name. If any of these -->
+						<!-- instances has the @qualifier set to 'CL' (callme), it means that's -->
+						<!-- the preferred name and it is mapped also to EMPI.First Preferred name -->
+						<given qualifier="CL">Humpty</given>
+						<given>Humpty</given>
+					</name>
+					<name use="C">
+						<!-- Family name, mapped to EMPI.Surname -->
+						<family>Dumpty</family>
+						<!-- Up to three instances of given, mapping to EMPI.First Given name, -->
+						<!-- EMPI.Second Given name and EMPI.Third Given name. If any of these -->
+						<!-- instances has the @qualifier set to 'CL' (callme), it means that's -->
+						<!-- the preferred name and it is mapped also to EMPI.First Preferred name -->
+						<given>Humpty</given>
+					</name>
+					<!-- administrativeGenderCode indicates the gender of the person. -->
+					<!-- @value may have the values M-male, F-female, UN-undifferentiated. -->
+					<!-- If the gender is unknown, @value is empty and @nullFlavor is UNK -->
+					<!-- Mapped to EMPI.Gender according to the following table: -->
+					<!--	@value	@nullFlavor	EMPI.Gender	-->
+					<!--	______	___________	___________	-->
+					<!--	M					M			-->
+					<!--	F					F			-->
+					<!--	UN					NUD			-->
+					<!--			UNK			UNK			-->
+					<administrativeGenderCode code="M"/>
+					<!-- This element represent the birth date (without the time component). -->
+					<!-- @value is mapped to EMPI.Birth date -->
+					<birthTime value="19620624"/>
+					<!-- This element represent the death date (without the time component). -->
+					<!-- If nullFlavor is not NA, @value is mapped to EMPI.Death date -->
+										<deceasedInd value="true"/>
+					<deceasedTime nullFlavor="NA" value="20050605"/>
+					<!-- playedOtherIDs is an optional series of elements that can contain -->
+					<!-- other identifiers used by the revised person. -->
+					<playedOtherIDs classCode="ROL">
+						<!-- id/@root contains an OID indicating the type of the identifier -->
+						<!-- and is mapped to EMPI.Alternate ID Type. -->
+						<!-- id/@extension contains the actual identifier value and it is -->
+						<!-- mapped to EMPI.Alternate ID Value -->
+						<id root="2.16.840.1.113883.3.51.1.1.6.2" extension="88990092" assigningAuthorityName="ABPHN"/>
+					</playedOtherIDs>
+				</identifiedPerson>
+			</target>
+		</subject>
+		<queryAck>
+			<queryResponseCode code="BCHCIM.FC.0.0000"/>
+			<resultTotalQuantity value="3"/>
+		</queryAck>
+		<queryByParameterPayload>
+			<person.id>
+				<value root="2.16.840.1.113883.3.51.1.1.6" extension="1234567890" assigningAuthorityName="VIHA_NORTH"/>
+			</person.id>
+		</queryByParameterPayload>
+	</controlActProcess>
+</HCIM_IN_GetDemographicsResponse>

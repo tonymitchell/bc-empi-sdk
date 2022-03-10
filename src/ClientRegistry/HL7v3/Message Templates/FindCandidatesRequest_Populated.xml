@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HCIM_IN_FindCandidates xmlns="urn:hl7-org:v3" xmlns:mif="urn:hl7-org:v3/mif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!-- unique id for the message -->
+	<id root="2.16.840.1.113883.3.51.1.1.1" extension="419E8980-8D02-4402-B43D-6A32575B12EF"/>
+	<!-- message creation time -->
+	<creationTime value="20120221000000"/>
+	<!-- message version -->
+	<versionCode code="V3PR1"/>
+	<!-- interaction id -->
+	<interactionId root="2.16.840.1.113883.3.51.1.1.2" extension="HCIM_IN_FindCandidates"/>
+	<!-- processing code (P = production) -->
+	<processingCode code="P"/>
+	<!-- processing mode code (T = current processing) -->
+	<processingModeCode code="T"/>
+	<!-- accept ack (TBD) -->
+	<acceptAckCode code="NE"/>
+	<!-- receiver of the message -->
+	<receiver typeCode="RCV">
+		<device determinerCode="INSTANCE" classCode="DEV">
+			<!-- id/@extension identifies the receiving device/system inside the organization -->
+			<id root="2.16.840.1.113883.3.51.1.1.4" extension="192.168.0.1"/>
+			<asAgent classCode="AGNT">
+				<representedOrganization determinerCode="INSTANCE" classCode="ORG">
+					<!-- id/@extension identifies the receiving organization -->
+					<id root="2.16.840.1.113883.3.51.1.1.3" extension="HCIM"/>
+				</representedOrganization>
+			</asAgent>
+		</device>
+	</receiver>
+	<!-- sender of the message -->
+	<sender typeCode="SND">
+		<device determinerCode="INSTANCE" classCode="DEV">
+			<!-- id/@extension identifies the sending device/system inside the organization -->
+			<!-- Mapped to EMPI.SSID -->
+			<id root="2.16.840.1.113883.3.51.1.1.5" extension="PHSA_CW"/>
+			<asAgent classCode="AGNT">
+				<representedOrganization determinerCode="INSTANCE" classCode="ORG">
+					<!-- id/@extension identifies the sending organization -->
+					<!-- Mapped to EMPI.Governance Authority -->
+					<id root="2.16.840.1.113883.3.51.1.1.3" extension="PHSA"/>
+				</representedOrganization>
+			</asAgent>
+		</device>
+	</sender>
+	<controlActProcess classCode="ACCM" moodCode="EVN">
+    <effectiveTime value="20120221000000" />
+		<dataEnterer typeCode="CST">
+			<assignedPerson classCode="ENT">
+				<id root="2.16.840.1.113883.3.51.1.1.7" extension="tony.mitchell@phsa.ca"/>
+			</assignedPerson>
+		</dataEnterer>
+		<queryByParameter>
+			<queryByParameterPayload>
+        <person.administrativeGender>
+          <value code="M" />
+        </person.administrativeGender>
+        <person.birthTime>
+          <value value="19370216" />
+        </person.birthTime>
+        <person.name>
+          <value use="L C">
+            <family>CITREON</family>
+            <!--<given>WINSTON</given>-->
+          </value>
+        </person.name>
+      </queryByParameterPayload>
+		</queryByParameter>
+	</controlActProcess>
+</HCIM_IN_FindCandidates>

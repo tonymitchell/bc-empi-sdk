@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "TestClient.WinForms": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

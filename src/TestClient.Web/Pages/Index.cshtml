@@ -1,0 +1,53 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">EMPI Search</h1>
+</div>
+
+<div class="text-center">
+    <form method="post">
+        <input id="phn" name="phn" placeholder="Enter PHN" />
+        <input id="surname" name="surname" placeholder="Surname" />
+        <input id="givenNames" name="givenNames" placeholder="Given Names" />
+        <input id="dob" name="dob" placeholder="Date of Birth" />
+        <input id="address" name="address" placeholder="Street Address" />
+        <input id="postalCode" name="address" placeholder="Postal Code" />
+        <input type="submit" />
+    </form>
+</div>
+
+@if (Model.SearchResults != null) {
+<div class="text-center">
+        <h1>Results</h1>
+        <table class="table">
+        <thead>
+            <tr>
+                <th>Score</th>
+                <th>PHN</th>
+                <th>Name</th>
+                <th>DOB</th>
+                <th>Address</th>
+                <th>Source IDs</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var result in Model.SearchResults)
+            {
+                <tr>
+                    <td> @result.MatchScore  </td>
+                    <td> @result.Phn  </td>
+                        <td>@if (result.CardName != null){ @IndexModel.ForDisplay(result.CardName) <br> }
+                            @IndexModel.ForDisplay(result.DeclaredName)</td>
+                    <td>@result.DateOfBirth </td>
+                    <td>@IndexModel.ForDisplay(result.PhysicalAddress ?? result.MailingAddress) </td>
+                    <td>@IndexModel.ForDisplay(result.SourceIdentifiers) </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+}
