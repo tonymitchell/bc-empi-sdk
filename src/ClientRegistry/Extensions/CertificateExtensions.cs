@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
+﻿using System;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 
@@ -14,9 +13,16 @@ namespace Health.Services.Extensions
 
             X509Certificate2Collection certs = store.Certificates.Find(X509FindType.FindBySubjectName, clientCertificateSubjectName, validOnly: false);   // validOnly: false needed for Azure
             if (certs.Count < 1) throw new Exception("No client certificate found.");
-            if (certs.Count > 1) throw new Exception("Could not resolve client certificate to a single certificate.");
 
-            certificates.Add(certs[0]);
+            // If multiple valid certificates, take the one expiring the furthest in the future
+            DateTime now = DateTime.Now;
+            var cert = certs.Cast<X509Certificate2>()
+                .Where(c => c.NotBefore <= now && now <= c.NotAfter)    // Remove certificates that aren't yet valid or are expired
+                .OrderByDescending(c => c.NotAfter)                     // Sort so first certs is the one expiring furthest in the future
+                .FirstOrDefault();                                      // Take first in the list
+            if (cert == null) throw new Exception("Could not find a valid, non-expired client certificate.");
+
+            certificates.Add(cert);
 
             store.Close();
         }
